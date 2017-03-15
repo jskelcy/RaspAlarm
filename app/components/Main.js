@@ -122,7 +122,7 @@ var Main = React.createClass({
 						}
 						// Makes the API call to weatherunderground, then assigns forecast, time and weather icon data to the corresponding states. 
 						$.ajax({
-							url: "http://api.wunderground.com/api/"+keys+"/hourly/q/"+locationObject.lat+","+locationObject.long+".json"
+							url: "https://api.wunderground.com/api/"+keys+"/hourly/q/"+locationObject.lat+","+locationObject.long+".json"
 							}).done((response) =>{
 								console.log(response);
 								this.setState({
@@ -155,7 +155,7 @@ var Main = React.createClass({
 						hasWeatherData = true;
 						//Gets the location from the reverse geocode api provided by Google. This enables us to show the actual name of the location that the user is in. 
 						$.ajax({
-							url: "http://maps.googleapis.com/maps/api/geocode/json?latlng="+locationObject.lat+","+locationObject.long+"&sensor=true"
+							url: "https://maps.googleapis.com/maps/api/geocode/json?latlng="+locationObject.lat+","+locationObject.long+"&sensor=true"
 						}).done((geoloc) =>{
 							console.log("Response from Google Geocode:"+geoloc);
 							console.log(geoloc);
@@ -165,7 +165,7 @@ var Main = React.createClass({
 						});
 						//Get the sunrise/sunset data
 						$.ajax({
-							url:"http://api.wunderground.com/api/"+keys+"/astronomy/q/"+locationObject.lat+","+locationObject.long+".json"
+							url:"https://api.wunderground.com/api/"+keys+"/astronomy/q/"+locationObject.lat+","+locationObject.long+".json"
 						}).done((sundata)=>{
 							var sunriseString = "0"+sundata.sun_phase.sunrise.hour+":"+sundata.sun_phase.sunrise.minute+"am";
 							var sunsetString = "0"+(sundata.sun_phase.sunset.hour-12)+":"+sundata.sun_phase.sunset.minute+"pm";
