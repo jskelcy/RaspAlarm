@@ -6,7 +6,6 @@ var Link = require('react-router').Link;
 var hashHistory = require('react-router').hashHistory;
 //Require the children
 var Main = require('./components/Main');
-var AlarmManager = require('./components/AlarmManager');
 
 ReactDOM.render(
 	<Router history={hashHistory}>
