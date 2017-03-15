@@ -11,7 +11,6 @@ var AlarmManager = require('./components/AlarmManager');
 ReactDOM.render(
 	<Router history={hashHistory}>
 		<Route path="/" component={Main}/>
-		<Route path="/alarmManager" component={AlarmManager}/>
 	</Router>,
 	document.getElementById('app')
 )
