@@ -1,16 +1,17 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-var logger = require('morgan');
-var mongoose = require('mongoose');
-var Alarm = require('./app/models/Alarms.js');
-var methodOverride = require('method-override');
+const express = require('express');
+const bodyParser = require('body-parser');
+const logger = require('morgan');
+const mongoose = require('mongoose');
+const Alarm = require('./app/models/Alarms.js');
+const methodOverride = require('method-override');
+const fs = require('fs');
 
-var app = express();
-var PORT = process.env.PORT || 3000; 
+const app = express();
+const PORT = process.env.PORT || 3000; 
 
 //Connect to mongo and let us know that we are successfully connected or there was an error. 
 mongoose.connect("mongodb://localhost:27017/alarms");
-var db = mongoose.connection;
+const db = mongoose.connection;
 db.on("open", function(){
 	console.log("Connected to MongoDB on port 27017.");
 });
@@ -39,6 +40,17 @@ app.get('/alarms', function(req, res){
 		}
 	});
 });
+//Get image file names for use in the settingsModal
+app.get('/images', function(req, res){
+	const allImages = []; 
+	fs.readdir("./public/bgs/", (err, files)=>{
+		files.forEach(file =>{
+			allImages.push(file);
+		});
+		res.send(allImages);
+	});
+});
+
 //Route to set alarms. 
 app.post('/setAlarm', function(req, res){
 	console.log(req.body);

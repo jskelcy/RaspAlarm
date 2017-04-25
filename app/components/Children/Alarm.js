@@ -47,8 +47,7 @@ export default class Alarm extends React.Component{
 					}
 				}
 			}	
-	}
-	//This is veyr much a temporary function that will instead, open up a modal, allow the user to choose custom sounds and backgrounds and then save them so that the page will always render with the custom options. 
+	} 
 	_launchModal(){
 		this.setState({
 			showModal: true
@@ -89,6 +88,8 @@ export default class Alarm extends React.Component{
 					<h3 id="settings" onClick={()=>this._launchModal()}>Settings</h3>
 					<ReactModal isOpen={this.state.showModal} contentLabel="Settings" shouldCloseOnOverlayClick={true}>
 						<h4>This is where the settings go</h4>
+						<h5> Change Sound: </h5>
+						<h5> Change Background: </h5>
 						<button onClick={() => this._closeModal()}>Close</button>
 					</ReactModal>
 				</div>
