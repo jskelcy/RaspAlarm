@@ -14,7 +14,8 @@ export default class Alarm extends React.Component{
 			alarmStatus: "not ringing",
 			awake: false,
 			alarms: [],
-			showModal: false
+			showModal: false,
+			images: []
 		}
 		this._getAlarms = this._getAlarms.bind(this);
 		this._checkAlarm = this._checkAlarm.bind(this);
@@ -49,8 +50,14 @@ export default class Alarm extends React.Component{
 			}	
 	} 
 	_launchModal(){
-		this.setState({
-			showModal: true
+		$.ajax({
+			url: "/images"
+		}).done((images)=>{
+			this.setState({
+				showModal: true,
+				images: images
+			});
+			console.log(this.state.images);
 		});
 	}
 	_closeModal(){
