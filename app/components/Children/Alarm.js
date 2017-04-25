@@ -1,6 +1,7 @@
 import React from 'react'
 import moment from 'moment'
 import { Link } from 'react-router'
+import ReactModal from 'react-modal'
 
 const alarmSound = new Audio("./sounds/alarm.mp3")
 let alarmInterval;
@@ -12,11 +13,13 @@ export default class Alarm extends React.Component{
 		this.state = {
 			alarmStatus: "not ringing",
 			awake: false,
-			alarms: []
+			alarms: [],
+			showModal: false
 		}
 		this._getAlarms = this._getAlarms.bind(this);
 		this._checkAlarm = this._checkAlarm.bind(this);
 		this._awake = this._awake.bind(this);
+		this._launchModal = this._launchModal.bind(this);
 	}
 	_getAlarms(){
 		$.ajax({
@@ -47,8 +50,14 @@ export default class Alarm extends React.Component{
 	}
 	//This is veyr much a temporary function that will instead, open up a modal, allow the user to choose custom sounds and backgrounds and then save them so that the page will always render with the custom options. 
 	_launchModal(){
-		document.body.style.background = "linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7) ), url('./bgs/waterfall.jpg')"
-		document.body.style.backgroundSize = "cover"; 
+		this.setState({
+			showModal: true
+		});
+	}
+	_closeModal(){
+		this.setState({
+			showModal: false
+		})
 	}
 	componentDidMount(){
 		this._getAlarms();
@@ -78,6 +87,10 @@ export default class Alarm extends React.Component{
 				<div className="col-xs-12" id="alarm">
 					<h3><Link to="/AlarmManager">Set an alarm</Link></h3>
 					<h3 id="settings" onClick={()=>this._launchModal()}>Settings</h3>
+					<ReactModal isOpen={this.state.showModal} contentLabel="Settings" shouldCloseOnOverlayClick={true}>
+						<h4>This is where the settings go</h4>
+						<button onClick={() => this._closeModal()}>Close</button>
+					</ReactModal>
 				</div>
 			)
 		}
