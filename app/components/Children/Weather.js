@@ -23,8 +23,8 @@ export default class Weather extends React.Component{
 				else return "wi wi-night-snow"
 		}
 		else if(weatherProp == "chancerain"){
-			if(isNight == false)return "wi wi-day-rain"
-				else return "wi wi-night-rain"
+			if(isNight == false)return "wi wi-sprinkle"
+				else return "wi wi-night-sprinkle"
 		}
 		else if(weatherProp == "chancesleet"){
 			if(isNight == false)return "wi wi-day-sleet"
