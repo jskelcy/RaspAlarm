@@ -17,6 +17,7 @@ p{
 }
 body{
 	background-color: black;
+	background: linear-gradient( rgba(0,0,0,0.6), rgba(0,0,0,0.6) ), url('../bgs/bridge.jpg');
 	background-size: cover;
 }
 i{
@@ -26,6 +27,7 @@ i{
 a{
 	color:white;
 }
+background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('landingpagepic.jpg');
 .bootstrap-timepicker-widget.dropdown-menu {
     z-index: 1050!important;
 }
