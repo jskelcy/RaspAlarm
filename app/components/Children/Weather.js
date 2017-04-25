@@ -77,20 +77,20 @@ export default class Weather extends React.Component{
 				else return "wi wi-night-sleet"
 		}
 		else if(weatherProp == "rain"){
-			if(isNight == false)return "wi wi-day-rain";
-				else return "wi wi-night-rain"
+			if(isNight == false)return "wi wi-rain";
+				else return "wi wi-rain"
 		}
 		else if(weatherProp == "snow"){
-			if(isNight == false)return "wi wi-day-snow";
-				else return "wi wi-night-snow"
+			if(isNight == false)return "wi wi-snow";
+				else return "wi wi-snow"
 		}
 		else if(weatherProp == "sunny"){
 			if(isNight == false)return "wi wi-day-sunny";
 				else return "wi wi-night-clear"
 		}
 		else if(weatherProp == "tstorms"){
-			if(isNight == false)return "wi wi-day-storm-showers";
-				else return "wi wi-night-alt-storm-showers"
+			if(isNight == false)return "wi wi-storm-showers";
+				else return "wi wi-storm-showers"
 		}
 		else if(weatherProp == "unknown"){
 			if(isNight == false)return "wi wi-day-cloudy-high";
@@ -98,10 +98,6 @@ export default class Weather extends React.Component{
 		}
 		else if(weatherProp == "cloudy"){
 			if(isNight == false)return "wi wi-day-cloudy";
-				else return "wi wi-night-alt-cloudy"
-		}
-		else if(weatherProp == "partlycloudy"){
-			if(isNight == false)return "wi wi-day";
 				else return "wi wi-night-alt-cloudy"
 		}
 	}
