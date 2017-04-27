@@ -6,6 +6,15 @@ import ReactModal from 'react-modal'
 const alarmSound = new Audio("./sounds/alarm.mp3")
 let alarmInterval;
 let alarmsArr = [];
+const modalStyle = {
+	overlay: {
+		backgroundColor: 'rgba(0, 0, 0, 0.7)'
+	},
+	content: {
+		backgroundColor: 'black',
+		height: '50%'
+	}
+}
 
 export default class Alarm extends React.Component{
 	constructor(props){
@@ -93,8 +102,8 @@ export default class Alarm extends React.Component{
 				<div className="col-xs-12" id="alarm">
 					<h3><Link to="/AlarmManager">Set an alarm</Link></h3>
 					<h3 id="settings" onClick={()=>this._launchModal()}>Settings</h3>
-					<ReactModal isOpen={this.state.showModal} contentLabel="Settings" shouldCloseOnOverlayClick={true}>
-						<h4>This is where the settings go</h4>
+					<ReactModal isOpen={this.state.showModal} contentLabel="Settings" shouldCloseOnOverlayClick={true} style={modalStyle}>
+						<h4 id="settingsBanner">Settings</h4>
 						<h5> Change Sound: </h5>
 						<h5> Change Background: </h5>
 						<button onClick={() => this._closeModal()}>Close</button>
